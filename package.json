@@ -1,0 +1,29 @@
+{
+  "name": "planapackagebundler",
+  "version": "1.0.0",
+  "description": "",
+  "main": "FinalPLana.js",
+  "scripts": {
+    "test": "jest",
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.11.4",
+    "@babel/preset-env": "^7.11.0",
+    "babel-jest": "^26.3.0",
+    "jest": "^26.4.2",
+    "parcel-bundler": "^1.12.4"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/umaannaiyan/PLanaFirstPackage.git"
+  },
+  "bugs": {
+    "url": "https://github.com/umaannaiyan/PLanaFirstPackage/issues"
+  },
+  "homepage": "https://github.com/umaannaiyan/PLanaFirstPackage#readme"
+}
