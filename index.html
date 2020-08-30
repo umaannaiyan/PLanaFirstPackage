@@ -18,10 +18,9 @@
       <div class="header">
         <h1>PLana</h1>
       </div>
-      <div class="row">
+    <div class="row">
         
-        <div class="col-3 col-s-3 menu" style= "margin-left: 20px;"> 
-            
+      <div class="col-3 menu" style= "margin-left: 20px;">   
           <div class="card"
               style=  "background-color: rgb(187, 186, 186);
               color:rgb(159, 133, 159)">
@@ -35,13 +34,11 @@
               </ul>
             </div>
           </div>
-        
-        </div>
-        <div class="col-6 col-s-9">
+      </div>
+
+      <div class="col-6">
         <div class="container">
-          
-          <div class ="addEdit">
-            
+          <div class ="addEdit"> 
             <button 
             class="btn btn-lg btn-warning" 
             id = "btnAdd"
@@ -57,69 +54,45 @@
             style="margin-left: 15px; margin-bottom: 20px; 
             border-radius: 5px; background-color:rgb(159, 133, 159);
             color: white ;border-color: white;float: inline-end; "> 
-            My Tasks</button>
+            All Tasks</button>
             
             <div class="btn-group">
-            <button 
-            class="btn btn-lg btn-warning dropdown-toggle" 
-            id="btnFilter"
-            style="margin-left: 15px; margin-bottom: 20px; 
-            border-radius: 5px; background-color:rgb(159, 133, 159);
-            color: white ;border-color: white; display: flex; "
-            data-toggle="dropdown">
-            Filter</button>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" id = "toDo" href="#">To Do</a>
-              <a class="dropdown-item" id = "inProgress" href="#">In Progress</a>
-              <a class="dropdown-item" id = "review" href="#">Review</a>
-              <a class="dropdown-item" id = "done" href="#">Done</a>
-            </div>
-          </div>
-
-            
-            
-
-            <!-- <a href="collapse.html">
               <button 
-            class="btn btn-lg btn-warning" 
-            style="margin-left: 15px; margin-bottom: 20px; 
-            border-radius: 5px; background-color:rgb(159, 133, 159);
-            color: white ;border-color: white;float: inline-end; "
-            data-toggle="modal" data-target="#staticBackdrop"> 
-            Collapse</button>
-            </a>      -->
-        </div>
-        
-        <!-- <div class="accordion" id="accordion">
-          
-          
-          
-          
-        </div> -->
-
-    
-              <div id="listGroupContainer">
-                <!-- <div class="list-group" >
-                  <a href="#" class="list-group-item list-group-item-action "  >
-                  <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">Task Name  </h5>
-                    <small>3 days ago</small> 
-                    <button class="btn btn-danger btn-sm" 
-                    id="btnDelete"
-                    style = "background-color: gainsboro;
-                    color: red; border-color:gainsboro;">
-                    X</button>
-                  </div>
-                  <p class="mb-1">Task Description</p>
-                  <small class= "text-muted">
-                    Due Tomorrow  Asignee:     Status:     
-                  </small>
-                </a>     </div>          -->
-                
+                  class="btn btn-lg btn-warning dropdown-toggle" 
+                  id="btnFilter"
+                  style="margin-left: 15px; margin-bottom: 20px; 
+                  border-radius: 5px; background-color:rgb(159, 133, 159);
+                  color: white ;border-color: white; display: flex; "
+                  data-toggle="dropdown">
+                    Filter
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" id = "toDo" href="#">To Do</a>
+                <a class="dropdown-item" id = "inProgress" href="#">In Progress</a>
+                <a class="dropdown-item" id = "review" href="#">Review</a>
+                <a class="dropdown-item" id = "done" href="#">Done</a>
               </div>
+            </div>  
           </div>
-          </div>    
-          
+
+          <div id="listGroupContainer" class="listGroup">
+                
+                
+          </div>
+        </div>
+      </div>   
+      <div class="col-3 right">
+        <div class="aside">
+          <h2>What?</h2>
+          <p>PLana is designed for convenience</p>
+          <h2>Where?</h2>
+          <p></p>
+          <h2>How?</h2>
+          <p></p>
+        </div>
+      </div>
+      
+    </div>      
           <div class="modal fade" id="staticBackdrop" id="task-modal"   data-backdrop="static" data-keyboard="true" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
@@ -190,7 +163,7 @@
                   </form>
                 </div>
                 <div class="modal-footer" style="background-color:rgb(159, 133, 159)">
-                  <button type="reset" class="btn btn-warning" id= "btnReset" data-dismiss="modal">Reset                  
+                  <button type="reset" class="btn btn-warning" id= "btnAModalReset" >Reset                  
                   </button>
                   <button type="button" class="btn btn-secondary" id= "btnClose" data-dismiss="modal">Close</button>
                   <button type="submit"  data-target="#staticBackdrop"  class="btn btn-success" id= "btnSave">Save</button>
@@ -273,37 +246,28 @@
                   </form>
                 </div>
                 <div class="modal-footer" style="background-color:rgb(159, 133, 159)">
-                  <button type="reset" class="btn btn-warning" id= "btnEditReset" data-dismiss="modal">Reset                  
+                  <button type="reset" class="btn btn-warning" id= "btnEModalReset" >Reset                  
                   </button>
                   <button type="button" class="btn btn-secondary" id= "btnEditClose" data-dismiss="modal">Close</button>
                   <button type="submit"  data-target="#staticBackdropEdit"  class="btn btn-success" id= "btnEditSave">Update</button>
-
-                  <!-- // data-toggle="modal"-->
-                  <!-- <small style= "color: white">* Information cannot be left blank </small> -->
                 </div>
               </div>
             </div>
           </div>
   
-      <div class="footer">
+      
+    
+    <div class="footer">
         <p>PLana is Responsive Design. It can easily work on your smallest device to the largest.</p>
-      </div>
+    </div>
  
 
-    </div>
+   
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     
-    <!-- <script src="PLanaToDo.js"></script> -->
     
-    <!-- <script src="LocalStorageDOM.js"> -->
-       <!-- <script src="storagetest.js"></script> -->
-      
-    <!-- <script src= "afterDeleteLoop.js"></script> -->
-    <!-- <script src="tryingDelete.js"></script> -->
-    <!-- <script src="CollapsePlana.js"></script> -->
-    <!-- <script src="FinalPLanaBackupAfterAnindha.js"></script> -->
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     <script src="finalplana.js"></script>
 </body> 

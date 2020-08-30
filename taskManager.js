@@ -37,14 +37,7 @@ deleteTask(id){
 updateTask(taskId,name,descrip,assign,stat,date){
 
     let myTaskList = JSON.parse(localStorage.getItem("Banana")); 
-    // const task = new Task(
-    //     taskId,
-    //     name,
-    //     descrip,
-    //     assign,
-    //     stat, 
-    //     date
-    // );
+   
     for(let i=0;i< myTaskList.length;i++){
         if(myTaskList[i].taskId === taskId){
             myTaskList[i].name = name,
@@ -53,7 +46,7 @@ updateTask(taskId,name,descrip,assign,stat,date){
             myTaskList[i].stat = stat,
             myTaskList[i].date = date;
             localStorage.setItem("Banana", JSON.stringify(myTaskList));
-            // this.taskList = myTaskList;
+            
 
             this.taskList[i].taskId=taskId,
             this.taskList[i].name=name,
@@ -61,7 +54,7 @@ updateTask(taskId,name,descrip,assign,stat,date){
             this.taskList[i].assign=assign,
             this.taskList[i].stat=stat,
             this.taskList[i].date=date
-            // console.log(this.taskList[i]);
+          
             break;
         }
     }

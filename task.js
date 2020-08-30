@@ -35,11 +35,11 @@ addToHTML()
                         </div>
                         <button class="edit btn btn-primary btn-sm float-right ml-2 "  
                         value="${this.taskId}" 
-                        style = " color: white";">           
+                        style = " color: blue ;border-color: blue; background-color: white;margin-right: 2px">           
                         E</button>
                         <button  class="delete btn btn-danger btn-sm float-right" 
                         value="${this.taskId}" 
-                        style = "color: white;">
+                        style = "color: red; border-color: red; background-color: white">
                         X
                         </button>
                     </div>
