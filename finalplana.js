@@ -38,6 +38,9 @@ btnDisplay.addEventListener("click",displayTask);
 const btnFilter =document.querySelector("#btnFilter");
 btnFilter.addEventListener("click",filterSelection);
 
+const btnToday =document.querySelector("#btnToday");
+btnToday.addEventListener("click",todaySelection);
+
 const btnAModalReset = document.querySelector("#btnAModalReset");
 btnAModalReset.addEventListener("click", clearAll);
 
@@ -51,16 +54,18 @@ const done =document.querySelector("#done");
 
 const listGroupContainer=document.querySelector("#listGroupContainer");
 
-var taskNameEvent = new Boolean(true);
-var assigneeEvent = new Boolean(true);
-var descriptionEvent = new Boolean(true);
-var statusEvent = new Boolean(true);
-var dateEvent = new Boolean(true);
+var taskNameEvent = new Boolean();
+var assigneeEvent = new Boolean();
+var descriptionEvent = new Boolean();
+var statusEvent = new Boolean();
+var dateEvent = new Boolean();
 
-var taskNameEditEvent = new Boolean(true);
-var assigneeEditEvent = new Boolean(true);
-var descriptionEditEvent = new Boolean(true);
+taskNameEvent = false;
+assigneeEvent = false;
 
+var taskNameEditEvent = new Boolean(false);
+var assigneeEditEvent = new Boolean(false);
+var descriptionEditEvent = new Boolean(false);
 
 // Initialising(creating instances) classes
 const task = new Task();
@@ -72,27 +77,25 @@ function saveButtonClicked(event){
         taskManager.addTask(taskName.value, description.value, assignee.value, statusSelect.value, taskDate.value);
         displayTask();    
         clearAll();
-        $('#staticBackdrop').modal("hide");   
-        return true;        
-    }
-    else{
-        return false;
+        $('#staticBackdrop').modal("hide");
+        taskNameEvent = false;
+        assigneeEvent = false;   
+    }       
+    else 
+    {
+        $('#staticBackdrop').modal("show"); 
     }
 }
 
 function editSaveButtonClicked(event){
-   
-    
     if(taskNameEditEvent && assigneeEditEvent && descriptionEditEvent){
-    
-        taskManager.updateTask(hiddenTaskId.value, taskNameEdit.value, descriptionEdit.value, assigneeEdit.value, statusSelectEdit.value, taskDateEdit.value);
-        displayTask();    
-        $('#staticBackdropEdit').modal("hide");
-        return true;        
+            taskManager.updateTask(hiddenTaskId.value, taskNameEdit.value, descriptionEdit.value, assigneeEdit.value, statusSelectEdit.value, taskDateEdit.value);
+            displayTask();    
+            $('#staticBackdropEdit').modal("hide");
+            return true;
     }
-    
     else{
-        return false;
+        $('#staticBackdropEdit').modal("show");
     }
 }
 
@@ -166,7 +169,20 @@ function cardDisplay(event){
 
 }
 
-
+function todaySelection(event){
+    let today = new Date();
+    let todayTskList = [];
+    const myTask = JSON.parse(localStorage.getItem ('Banana'));
+    if(myTask != []){
+        for(let i=0; i< myTask.length;i++){
+            let tskDate = new Date(myTask[i].date);  
+            if(tskDate.getDate() === today.getDate() && tskDate.getMonth() ===today.getMonth() && tskDate.getFullYear() === today.getFullYear()){
+                todayTskList.push(myTask[i]);
+            } 
+        }
+        displayFilter(todayTskList);
+    }
+}
 
 function filterSelection(event){
     const myTask = JSON.parse(localStorage.getItem ('Banana'));
@@ -236,25 +252,26 @@ function clearEdit(){
 	taskDateEdit.value = null;
     statusSelectEdit.value = null;
     
-    taskNameEdit.classList.remove("is-valid", "is-valid");
-    descriptionEdit.classList.remove("is-valid", "is-valid");
-    assigneeEdit.classList.remove("is-valid", "is-valid");
-    statusSelectEdit.classList.remove("is-valid", "is-valid");
-    taskDateEdit.classList.remove("is-valid", "is-valid");
+    taskNameEdit.classList.remove("is-valid", "is-invalid");
+    descriptionEdit.classList.remove("is-valid", "is-invalid");
+    assigneeEdit.classList.remove("is-valid", "is-invalid");
+    statusSelectEdit.classList.remove("is-valid", "is-invalid");
+    taskDateEdit.classList.remove("is-valid", "is-invalid");
 }
 
 //Task form validation  Begins here
 taskName.addEventListener("input",function(event){
-        if (event.target.value && event.target.value.length >= 3) {
+    if (event.target.value && event.target.value.length >= 3) {
             event.target.classList.remove("is-invalid");
             event.target.classList.add("is-valid");
-            
             taskNameEvent= true;         
-        } else {
+    } 
+       
+    else {
         event.target.classList.remove("is-valid");
         event.target.classList.add("is-invalid");
         taskNameEvent= false;
-        }
+    }
 });
 
 taskNameEdit.addEventListener("input",function(event){
@@ -327,16 +344,16 @@ statusSelect.addEventListener("input",function(event){
             statusEvent=false;
         }
 });
-taskDate.addEventListener("input",function(event){
-        if (event.target.value ) {
-            event.target.classList.remove("is-invalid");
-            event.target.classList.add("is-valid");
-            statusEvent=true;
-        } else {
-            event.target.classList.remove("is-valid");
-            event.target.classList.add("is-invalid");
-            statusEvent=false;
-        }
-});
+// taskDate.addEventListener("input",function(event){
+//         if (event.target.value ) {
+//             event.target.classList.remove("is-invalid");
+//             event.target.classList.add("is-valid");
+//             statusEvent=true;
+//         } else {
+//             event.target.classList.remove("is-valid");
+//             event.target.classList.add("is-invalid");
+//             statusEvent=false;
+//         }
+// });
 
  // Task Form Validation Ends here
