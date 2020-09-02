@@ -16,10 +16,18 @@
 <body >
     <div class="mainPlana">
       <div class="header">
+        <div>
+          <button type="button" class="btn btn-secondary float-right" 
+          style="border-radius: 5px; background-color:rgb(159, 133, 159); border-color: rgb(187, 186, 186);" 
+          data-toggle="modal" data-target="#staticBackdropCalendar">
+          My Calendar
+        </button>
         <h1>PLana</h1>
+        
+      </div>
       </div>
     <div class="row">
-        
+        <!-- Card Display on the left -->
       <div class="col-3 menu" style= "margin-left: 20px;">   
           <div class="card"
               style=  "background-color: rgb(187, 186, 186);
@@ -34,43 +42,45 @@
               </ul>
             </div>
           </div>
+          
       </div>
 
       <div class="col-6">
         <div class="container">
           <div class ="addEdit"> 
+            <!-- Add task -->
             <button 
             class="btn btn-lg btn-warning" 
             id = "btnAdd"
             style="margin-left: 15px; margin-bottom: 20px; 
             border-radius: 5px; background-color:rgb(159, 133, 159);
-            color:white;border-color: white; "
+            color:white; border-color: #f0f0f5"
             data-toggle="modal" data-target="#staticBackdrop">
             +</button>
-
+            <!-- All Task  -->
             <button 
             class="btn btn-lg btn-warning" 
             id="btnDisplay"
             style="margin-left: 15px; margin-bottom: 20px; 
             border-radius: 5px; background-color:rgb(159, 133, 159);
-            color: white ;border-color: white;float: inline-end; "> 
+            color: white ;float: inline-end; border-color: #f0f0f5 "> 
             All Tasks</button>
-
+            <!-- Filter by Date -->
             <button 
             class="btn btn-lg btn-warning" 
             id="btnToday"
             style="margin-left: 15px; margin-bottom: 20px; 
             border-radius: 5px; background-color:rgb(159, 133, 159);
-            color: white ;border-color: white;float: inline-end; "> 
+            color: white ;float: inline-end; border-color: #f0f0f5"> 
             Today's Task</button>
-            
+            <!-- Filter by Status -->
             <div class="btn-group">
               <button 
                   class="btn btn-lg btn-warning dropdown-toggle" 
                   id="btnFilter"
                   style="margin-left: 15px; margin-bottom: 20px; 
                   border-radius: 5px; background-color:rgb(159, 133, 159);
-                  color: white ;border-color: white; display: flex; "
+                  color: white ; display: flex; border-color: #f0f0f5;"
                   data-toggle="dropdown">
                     Filter
               </button>
@@ -80,27 +90,46 @@
                 <a class="dropdown-item" id = "review" href="#">Review</a>
                 <a class="dropdown-item" id = "done" href="#">Done</a>
               </div>
-            </div>  
-          </div>
+            </div> 
 
+          </div>
+          
           <div id="listGroupContainer" class="listGroup">
                 
-                
+                <!-- Dynamic List gets appended here -->
           </div>
         </div>
       </div>   
-      <div class="col-3 right">
-        <div class="aside">
-          <h2>What?</h2>
-          <p>PLana is designed for convenience</p>
-          <h2>Where?</h2>
-          <p></p>
-          <h2>How?</h2>
-          <p></p>
-        </div>
-      </div>
+      
       
     </div>      
+
+
+<!-- Google Calendar modal -->
+    <div class="modal fade" class="modal-dialog modal-xl"id="staticBackdropCalendar" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Calendar</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div>
+              <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=Australia%2FHobart&amp;src=dW1hLmFubmFpeWFuQGdtYWlsLmNvbQ&amp;src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;src=ZW4uYXVzdHJhbGlhbiNob2xpZGF5QGdyb3VwLnYuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=ZW4uaW5kaWFuI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;color=%234285F4&amp;color=%2333B679&amp;color=%230B8043&amp;color=%23EF6C00" 
+              style="border:solid 1px #777" width="470" height="270" frameborder="0" scrolling="no"></iframe>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+  
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!-- Add Task Modal -->
           <div class="modal fade" id="staticBackdrop" id="task-modal"   data-backdrop="static" data-keyboard="true" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
@@ -182,7 +211,7 @@
               </div>
             </div>
           </div>
-                  
+          <!-- Modal for Edit form  -->
           <div class="modal fade" id="staticBackdropEdit" id="task-modal"   data-backdrop="static" data-keyboard="true" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
@@ -266,7 +295,12 @@
       
     
     <div class="footer">
-        <p>PLana is Responsive Design. It can easily work on your smallest device to the largest.</p>
+      <div id="fb-root"></div>
+      <div class="fb-share-button" data-href="https://www.facebook.com/uma.annaiyan" data-layout="button_count" data-size="small">
+        <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.facebook.com%2Fuma.annaiyan&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a>
+      </div>
+      <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v8.0" nonce="i3vFhK2W"></script>
+        <p>PLana is a Responsive Design. It can easily work on your Largest screen to the Ipads.</p>
     </div>
  
 

@@ -17,14 +17,14 @@ const assigneeEdit=document.querySelector("#assigneeEdit");
 const taskDateEdit=document.querySelector("#taskDateEdit");
 const statusSelectEdit=document.querySelector("#statusSelectEdit");
 
-//Task Card
+//Task Card initialisation
 
 const tsk=document.querySelector("#tsk");
 const asn=document.querySelector("#asn");
 const due=document.querySelector("#due");
 const st=document.querySelector("#st");
 
-//Modal and Form Buttons 
+//Modal and Form Buttons initialisation
 
 const btnSave=document.querySelector("#btnSave");
 btnSave.addEventListener("click",saveButtonClicked);
@@ -54,6 +54,9 @@ const done =document.querySelector("#done");
 
 const listGroupContainer=document.querySelector("#listGroupContainer");
 
+
+// Validation initialisation
+
 var taskNameEvent = new Boolean();
 var assigneeEvent = new Boolean();
 var descriptionEvent = new Boolean();
@@ -68,17 +71,19 @@ var assigneeEditEvent = new Boolean(false);
 var descriptionEditEvent = new Boolean(false);
 
 // Initialising(creating instances) classes
+
 const task = new Task();
 const taskManager = new TaskManager();
 
+// Add task Modal - Save button
 
 function saveButtonClicked(event){
     if(taskNameEvent && assigneeEvent && descriptionEvent && statusEvent){
         taskManager.addTask(taskName.value, description.value, assignee.value, statusSelect.value, taskDate.value);
-        displayTask();    
-        clearAll();
+        displayTask();  //displaying the tasks and creating the dynamic HTML element  
+        clearAll(); // clearing the inputs of the Add Task modal form 
         $('#staticBackdrop').modal("hide");
-        taskNameEvent = false;
+        taskNameEvent = false; // setting validation for avoiding submission of empty form
         assigneeEvent = false;   
     }       
     else 
@@ -86,7 +91,7 @@ function saveButtonClicked(event){
         $('#staticBackdrop').modal("show"); 
     }
 }
-
+// Edit task Modal Save Button
 function editSaveButtonClicked(event){
     if(taskNameEditEvent && assigneeEditEvent && descriptionEditEvent){
             taskManager.updateTask(hiddenTaskId.value, taskNameEdit.value, descriptionEdit.value, assigneeEdit.value, statusSelectEdit.value, taskDateEdit.value);
@@ -102,7 +107,7 @@ function editSaveButtonClicked(event){
 function displayTask(){ 
     listGroupContainer.innerHTML="";
     let myTaskList = JSON.parse(localStorage.getItem ('Banana'));
-    taskManager.taskList = myTaskList;
+    taskManager.taskList = myTaskList; // this taskList is purely for testing purpose
     for(let i=0; i< myTaskList.length;i++){
             const task = new Task(
                 myTaskList[i].taskId,
@@ -123,16 +128,14 @@ function displayTask(){
 
     const itemBox = element.querySelector("a.list-group-item");
     itemBox.addEventListener("mouseover", cardDisplay);
-    
+    //adding the dynamic HTMl element
     listGroupContainer.append(element);
    }
 }
-
+// when filter button is clicked displayFilter function displays according to the status selection
 function displayFilter(taski){
-
     listGroupContainer.innerHTML="";
-    
-    for(let i=0; i< taski.length;i++){
+       for(let i=0; i< taski.length;i++){
             const task = new Task(
                 taski[i].taskId,
                 taski[i].name,
@@ -156,6 +159,7 @@ function displayFilter(taski){
     listGroupContainer.append(element);
     }
 }
+// when mouse over the dynamic task list, the card display's the corresponding task
 function cardDisplay(event){
   let id= event.target.id;
   
@@ -168,7 +172,7 @@ function cardDisplay(event){
   st.textContent = task.stat;
 
 }
-
+// when the Today's Task button is clicked, it selects the task for Today
 function todaySelection(event){
     let today = new Date();
     let todayTskList = [];
@@ -184,6 +188,7 @@ function todaySelection(event){
     }
 }
 
+// when filter is pressed, the selection of the event is handled in filterSelection
 function filterSelection(event){
     const myTask = JSON.parse(localStorage.getItem ('Banana'));
     if(myTask != []){
@@ -205,14 +210,16 @@ function filterSelection(event){
         });
     }
 }  
-
+// when delete button is clicked in the task list, the corresponding task id is selected
+// and the delete function happens in the task manager class
 function deleteButtonClicked(event)
 {
     const id= event.target.value;
     taskManager.deleteTask(id);
     displayTask();       
 }    
-
+// when the edit button of the task list is clicked the event is picking up the task id
+// and displaying the in the Edit Task Modal
 function editButtonClicked(event)
 {
     $('#staticBackdropEdit').modal("show");
@@ -230,6 +237,8 @@ function editButtonClicked(event)
           
 } 
 
+// clearing the Add Task Modal form
+
 function clearAll(){
 
     taskName.value=null;
@@ -237,7 +246,7 @@ function clearAll(){
     assignee.value=null;
     taskDate.value=null;
     statusSelect.value=null;
-
+    // removing the validation placeholder
     taskName.classList.remove("is-valid", "is-valid");
     description.classList.remove("is-valid", "is-valid");
     assignee.classList.remove("is-valid", "is-valid");
@@ -245,13 +254,14 @@ function clearAll(){
     taskDate.classList.remove("is-valid", "is-valid");
 }
 
+// clearing the Edit Task Modal for next edit
 function clearEdit(){
     taskNameEdit.value = null;
 	descriptionEdit.value = null;
 	assigneeEdit.value = null;
 	taskDateEdit.value = null;
     statusSelectEdit.value = null;
-    
+    // removing the validation placeholder
     taskNameEdit.classList.remove("is-valid", "is-invalid");
     descriptionEdit.classList.remove("is-valid", "is-invalid");
     assigneeEdit.classList.remove("is-valid", "is-invalid");
@@ -260,8 +270,10 @@ function clearEdit(){
 }
 
 //Task form validation  Begins here
+
+//Taskname validation for Add Task Modal
 taskName.addEventListener("input",function(event){
-    if (event.target.value && event.target.value.length >= 3) {
+    if (event.target.value && event.target.value.length >= 6) {
             event.target.classList.remove("is-invalid");
             event.target.classList.add("is-valid");
             taskNameEvent= true;         
@@ -273,9 +285,9 @@ taskName.addEventListener("input",function(event){
         taskNameEvent= false;
     }
 });
-
+// Task name Validation for Edit Task Modal
 taskNameEdit.addEventListener("input",function(event){
-    if (event.target.value && event.target.value.length >= 3) {
+    if (event.target.value && event.target.value.length >= 6) {
         event.target.classList.remove("is-invalid");
         event.target.classList.add("is-valid");
         
@@ -286,7 +298,8 @@ taskNameEdit.addEventListener("input",function(event){
     taskNameEditEvent= false;
     }
 });
-   
+
+// assignee validation for Add Task Modal
 assignee.addEventListener("input",function(event){
         if (event.target.value && event.target.value.length >= 3) {
             event.target.classList.remove("is-invalid");
@@ -299,6 +312,7 @@ assignee.addEventListener("input",function(event){
         }
 });
 
+//assignee validation for Edit Task Modal
 assigneeEdit.addEventListener("input",function(event){
     if (event.target.value && event.target.value.length >= 3) {
         event.target.classList.remove("is-invalid");
@@ -310,8 +324,9 @@ assigneeEdit.addEventListener("input",function(event){
     assigneeEditEvent = false;
     }
 });
+//description validation for Add Task Modal
 description.addEventListener("input",function(event){
-        if (event.target.value && event.target.value.length >= 3) {
+        if (event.target.value && event.target.value.length >= 8) {
             event.target.classList.remove("is-invalid");
             event.target.classList.add("is-valid");
             descriptionEvent=true;
@@ -321,8 +336,9 @@ description.addEventListener("input",function(event){
             descriptionEvent=false;
         }
 });
+//description validation for Edit Task Modal
 descriptionEdit.addEventListener("input",function(event){
-    if (event.target.value && event.target.value.length >= 3) {
+    if (event.target.value && event.target.value.length >= 8) {
         event.target.classList.remove("is-invalid");
         event.target.classList.add("is-valid");
         descriptionEditEvent=true;
@@ -332,7 +348,7 @@ descriptionEdit.addEventListener("input",function(event){
         descriptionEditEvent=false;
     }
 });
-
+//status validation for Add Task Modal
 statusSelect.addEventListener("input",function(event){
         if (event.target.value ) {
             event.target.classList.remove("is-invalid");
@@ -344,16 +360,6 @@ statusSelect.addEventListener("input",function(event){
             statusEvent=false;
         }
 });
-// taskDate.addEventListener("input",function(event){
-//         if (event.target.value ) {
-//             event.target.classList.remove("is-invalid");
-//             event.target.classList.add("is-valid");
-//             statusEvent=true;
-//         } else {
-//             event.target.classList.remove("is-valid");
-//             event.target.classList.add("is-invalid");
-//             statusEvent=false;
-//         }
-// });
+
 
  // Task Form Validation Ends here

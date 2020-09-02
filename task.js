@@ -1,4 +1,5 @@
 import TaskManager from "./taskManager.js"
+//Task Class Constructor 
 export default class Task{
     constructor(taskId, name, descrip, assign, stat, date){
         this.taskId = taskId,
@@ -8,14 +9,14 @@ export default class Task{
         this.stat = stat,
         this.date =date
 }
-
+// Created for the testing 
 toHtmlElement(){
     const html = this.addToHTML();
     const element = document.createRange().createContextualFragment(html);
     return element;
 }
 
-
+// Dynamic task List HTML element
 addToHTML()
 {   
         const addHtml = `

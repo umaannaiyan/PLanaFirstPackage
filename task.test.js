@@ -1,6 +1,6 @@
 import Task from "./task";
 
-
+//task object instance
 const task = new Task(
         "task1",
         "Groceries",
@@ -10,6 +10,7 @@ const task = new Task(
         "2020-08-20"
 );
 
+//testing for adding task 
 test("object creation", () => {
     expect(task.taskId).toBe("task1");
     expect(task.name).toBe("Groceries");
@@ -18,6 +19,7 @@ test("object creation", () => {
     expect(task.stat).toBe("done");
     expect(task.date).toBe("2020-08-20");
 });
+
 
 test("check html whether it conatins taskid", () => {
     
