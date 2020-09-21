@@ -1,5 +1,5 @@
 # PLanaFirstPackage
-<h1> Task Planner </h1> 
+<h1 style="color: #9f859f> Task Planner </h1> 
 <h2> PLana is a Task Planner designed to demonstrate the skills in combining platforms like:</h2>
 
 
@@ -16,5 +16,8 @@
   <li> Integration - Babel,</li>
   <li> Deployment - Netlify </li>
 </ul>
+
+<h2> PLana can be accessed by the given URL </h2>
+<a "url = https://uma-varahamihira-task-planner.netlify.app/#>
 
 
