@@ -1,17 +1,20 @@
 # PLanaFirstPackage
 <h1> Task Planner </h1> 
-PLana is a Task Planner designed to demonstrate the skills in combining platforms like:
-HTML 5, 
-CSS 3
-Bootstrap 4,
-Java Script - ECMA Script 6 - Class Constructors and Object Handling,
-JEST,
-API Integration - NodeJS and NPM,
-CDN - Google Calendar, Facebook,
-Data Handling - Local Storage, 
-Package bundler - JSON, 
-Integration - Babel,
-Deployment - Netlify 
+<h2> PLana is a Task Planner designed to demonstrate the skills in combining platforms like:</h2>
 
+
+<ul>
+  <li> HTML 5,</li> 
+  <li> CSS 3, </li>
+  <li> Bootstrap 4,</li>
+  <li> Java Script - ECMA Script 6 - Class Constructors and Object Handling,</li>
+  <li> JEST,</li>
+  <li> API Integration - NodeJS and NPM,</li>
+  <li> CDN - Google Calendar, Facebook,</li>
+  <li> Data Handling - Local Storage, </li>
+  <li> Package bundler - JSON, </li>
+  <li> Integration - Babel,</li>
+  <li> Deployment - Netlify </li>
+</ul>
 
 
