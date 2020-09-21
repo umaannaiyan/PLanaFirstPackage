@@ -18,6 +18,6 @@
 </ul>
 
 <h2> PLana can be accessed by the given URL </h2>
-<a "url = https://uma-varahamihira-task-planner.netlify.app/#>
+<a "href = https://uma-varahamihira-task-planner.netlify.app/#>
 
 
