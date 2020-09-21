@@ -21,7 +21,8 @@
 
 <a href="url">https://uma-varahamihira-task-planner.netlify.app</a>
 
-PLana
+
+<a class="js-navigation-open link-gray-dark" title="PLana Screen Shot.png"  href="/umaannaiyan/PLanaFirstPackage/blob/master/PLana%20Screen%20Shot.png">PLana Screen Shot.png</a>
 
 
 
